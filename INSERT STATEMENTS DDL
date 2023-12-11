@@ -38,17 +38,17 @@ INSERT INTO order_table (order_id, customer_id, restaurant_id, store_id, payment
     ('ORD010', 'CST010', 'RES001', 'STR001', 'PAY010', '2023-12-11 17:30:00');
 
 -- Insert 10 values into the offer table
-INSERT INTO offer (offer_id, description, valid_from, valid_to, restaurant_id, store_id) VALUES
-    ('OFF001', 'Discount on Combo Meals', '2023-12-11', '2023-12-15', 'RES001', 'STR001'),
-    ('OFF002', 'Buy One Get One Free', '2023-12-11', '2023-12-14', 'RES002', 'STR002'),
-    ('OFF003', 'Happy Hour Specials', '2023-12-11', '2023-12-13', 'RES003', 'STR003'),
-    ('OFF004', 'Family Meal Deal', '2023-12-11', '2023-12-16', 'RES001', 'STR001'),
-    ('OFF005', 'Loyalty Points Promotion', '2023-12-11', '2023-12-18', 'RES002', 'STR002'),
-    ('OFF006', 'Weekend Brunch Special', '2023-12-11', '2023-12-17', 'RES003', 'STR003'),
-    ('OFF007', 'Student Discount', '2023-12-11', '2023-12-14', 'RES001', 'STR001'),
-    ('OFF008', 'Senior Citizen Discount', '2023-12-11', '2023-12-16', 'RES002', 'STR002'),
-    ('OFF009', 'Early Bird Special', '2023-12-11', '2023-12-13', 'RES003', 'STR003'),
-    ('OFF010', 'Holiday Season Promotion', '2023-12-11', '2023-12-20', 'RES001', 'STR001');
+INSERT INTO offer (offer_id, description, valid_from, valid_to, restaurant_id, store_id, discount_percentage) VALUES
+    ('OFF001', 'Discount on Combo Meals', '2023-12-11', '2023-12-15', 'RES001', 'STR001', 10.00),
+    ('OFF002', 'Buy One Get One Free', '2023-12-11', '2023-12-14', 'RES002', 'STR002', 15.00),
+    ('OFF003', 'Happy Hour Specials', '2023-12-11', '2023-12-13', 'RES003', 'STR003', 20.00),
+    ('OFF004', 'Family Meal Deal', '2023-12-11', '2023-12-16', 'RES001', 'STR001', 25.00),
+    ('OFF005', 'Loyalty Points Promotion', '2023-12-11', '2023-12-18', 'RES002', 'STR002', 10.00),
+    ('OFF006', 'Weekend Brunch Special', '2023-12-11', '2023-12-17', 'RES003', 'STR003', 15.00),
+    ('OFF007', 'Student Discount', '2023-12-11', '2023-12-14', 'RES001', 'STR001', 5.00),
+    ('OFF008', 'Senior Citizen Discount', '2023-12-11', '2023-12-16', 'RES002', 'STR002', 12.00),
+    ('OFF009', 'Early Bird Special', '2023-12-11', '2023-12-13', 'RES003', 'STR003', 18.00),
+    ('OFF010', 'Holiday Season Promotion', '2023-12-11', '2023-12-20', 'RES001', 'STR001', 10.00);
 
 -- Insert 10 values into the admin table
 INSERT INTO admin (admin_id, name) VALUES
