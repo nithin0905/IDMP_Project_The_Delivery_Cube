@@ -1,0 +1,30 @@
+-- Create a view based on the given SELECT statement
+CREATE VIEW customer_wallet_view AS
+SELECT
+    c.customer_id AS customer_id,
+    c.name AS name,
+    c.address AS address,
+    c.contact AS contact,
+    w.balance AS balance
+FROM
+    delivery_cube.customer c
+JOIN
+    delivery_cube.wallet w ON c.wallet_id = w.wallet_id;
+
+
+Highbalance (VIEW)
+
+
+-- Create a view based on the given SELECT statement for the offer table
+CREATE VIEW offer_view AS
+SELECT
+    offer.offer_id AS offer_id,
+    offer.valid_to AS valid_to,
+    offer.discount_percentage AS discount_percentage
+FROM
+    delivery_cube.offer;
+
+OffersView (VIEW)
+
+
+
