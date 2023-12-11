@@ -1,0 +1,64 @@
+-- FUNCTION 1
+
+DELIMITER $$
+
+CREATE DEFINER=`root`@`localhost` FUNCTION `GetOfferValidityDays`(
+    offerId INT
+) RETURNS INT
+BEGIN
+    DECLARE validityDays INT;
+    DECLARE validFrom DATE;
+    DECLARE validTo DATE;
+
+    -- Get valid_from and valid_to for the given offer_id
+    SELECT valid_from, valid_to INTO validFrom, validTo
+    FROM Offer
+    WHERE offer_id = offerId;
+
+    -- Calculate the difference in days
+    SET validityDays = DATEDIFF(validTo, validFrom);
+
+    RETURN validityDays;
+END$$
+
+DELIMITER ;
+
+
+Function 2
+
+DELIMITER $$
+
+CREATE DEFINER=`root`@`localhost` FUNCTION `GetTotalAmountSpent`(
+    customerIDParam INT
+) RETURNS DECIMAL(10, 2)
+BEGIN
+    DECLARE totalAmount DECIMAL(10, 2);
+
+    SELECT COALESCE(SUM(money_spent), 0.0) INTO totalAmount
+    FROM Payment
+    WHERE customer_id = customerIDParam;
+
+    RETURN totalAmount;
+END$$
+
+DELIMITER ;
+
+
+Function 3
+
+DELIMITER $$
+
+CREATE DEFINER=`root`@`localhost` FUNCTION `GetTotalDeliveries`(
+    empID VARCHAR(255)
+) RETURNS INT
+BEGIN
+    DECLARE totalDeliveries INT;
+
+    SELECT total_deliveries INTO totalDeliveries
+    FROM Employee
+    WHERE employee_id = empID;
+
+    RETURN totalDeliveries;
+END$$
+
+DELIMITER ;
