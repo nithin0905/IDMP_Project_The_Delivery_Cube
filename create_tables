@@ -1,16 +1,87 @@
--- Create Customer table
-CREATE TABLE customer (
-    customer_id VARCHAR(20) PRIMARY KEY,
-    name VARCHAR(255),
-    address VARCHAR(255),
-    contact VARCHAR(20),
-    wallet_id VARCHAR(20)
+-- Create Admin table
+CREATE TABLE admin (
+    admin_id VARCHAR(20) PRIMARY KEY,
+    name VARCHAR(255)
 );
 
 -- Create Wallet table
 CREATE TABLE wallet (
     wallet_id VARCHAR(20) PRIMARY KEY,
     balance DECIMAL(10, 2)
+);
+
+-- Create Customer table
+CREATE TABLE customer (
+    customer_id VARCHAR(20) PRIMARY KEY,
+    name VARCHAR(255),
+    address VARCHAR(255),
+    contact VARCHAR(20),
+    wallet_id VARCHAR(20),
+    FOREIGN KEY (wallet_id) REFERENCES wallet(wallet_id)
+);
+
+-- Create Grocery Store table
+CREATE TABLE grocery_store (
+    store_id VARCHAR(20) PRIMARY KEY,
+    store_name VARCHAR(255),
+    address VARCHAR(255),
+    contact VARCHAR(20),
+    operating_hours VARCHAR(255)
+);
+
+-- Create Restaurant Table
+CREATE TABLE restaurant (
+    restaurant_id VARCHAR(20) PRIMARY KEY,
+    name VARCHAR(255) NOT NULL,
+    location VARCHAR(255) NOT NULL,
+    operating_hours VARCHAR(255) NOT NULL,
+    contact VARCHAR(20) NOT NULL,
+    rating DECIMAL(3, 2) NOT NULL
+);
+
+-- Create Items table
+CREATE TABLE items (
+    item_id VARCHAR(20) PRIMARY KEY,
+    store_id VARCHAR(20),
+    item_name VARCHAR(255),
+    item_description VARCHAR(255),
+    price DECIMAL(10, 2),
+    FOREIGN KEY (store_id) REFERENCES grocery_store(store_id)
+);
+
+-- Create Menu table
+CREATE TABLE menu (
+    menu_id VARCHAR(20) PRIMARY KEY,
+    restaurant_id VARCHAR(20),
+    item_name VARCHAR(255),
+    item_description VARCHAR(255),
+    price DECIMAL(10, 2),
+    FOREIGN KEY (restaurant_id) REFERENCES restaurant(restaurant_id)
+);
+
+-- Create Employee table
+CREATE TABLE employee (
+    employee_id VARCHAR(20) PRIMARY KEY,
+    name VARCHAR(255),
+    contact VARCHAR(20),
+    total_deliveries INT,
+    ratings DECIMAL(3, 2),
+    restaurant_id VARCHAR(20),
+    store_id VARCHAR(20),
+    FOREIGN KEY (restaurant_id) REFERENCES restaurant(restaurant_id),
+    FOREIGN KEY (store_id) REFERENCES grocery_store(store_id)
+);
+
+-- Create Offer table
+CREATE TABLE offer (
+    offer_id VARCHAR(20) PRIMARY KEY,
+    description VARCHAR(255),
+    valid_from DATETIME,
+    valid_to DATETIME,
+    restaurant_id VARCHAR(20),
+    store_id VARCHAR(20),
+    FOREIGN KEY (restaurant_id) REFERENCES restaurant(restaurant_id),
+    FOREIGN KEY (store_id) REFERENCES grocery_store(store_id)
 );
 
 -- Create Payment table
@@ -38,51 +109,15 @@ CREATE TABLE order_table (
     FOREIGN KEY (payment_id) REFERENCES payment(payment_id)
 );
 
--- Create Offer table
-CREATE TABLE offer (
-    offer_id VARCHAR(20) PRIMARY KEY,
-    description VARCHAR(255),
-    valid_from DATETIME,
-    valid_to DATETIME,
-    restaurant_id VARCHAR(20),
-    store_id VARCHAR(20),
-    FOREIGN KEY (restaurant_id) REFERENCES order_table(restaurant_id),
-    FOREIGN KEY (store_id) REFERENCES order_table(store_id)
-);
-
--- Create Admin table
-CREATE TABLE admin (
-    admin_id VARCHAR(20) PRIMARY KEY,
-    name VARCHAR(255)
-);
-
--- Create Menu table
-CREATE TABLE menu (
-    menu_id VARCHAR(20) PRIMARY KEY,
-    restaurant_id VARCHAR(20),
-    item_name VARCHAR(255),
-    item_description VARCHAR(255),
-    price DECIMAL(10, 2),
-    FOREIGN KEY (restaurant_id) REFERENCES order_table(restaurant_id)
-);
-
--- Create Items table
-CREATE TABLE items (
-    item_id VARCHAR(20) PRIMARY KEY,
-    store_id VARCHAR(20),
-    item_name VARCHAR(255),
-    item_description VARCHAR(255),
-    price DECIMAL(10, 2),
-    FOREIGN KEY (store_id) REFERENCES order_table(store_id)
-);
-
--- Create Grocery Store table
-CREATE TABLE grocery_store (
-    store_id VARCHAR(20) PRIMARY KEY,
-    store_name VARCHAR(255),
-    address VARCHAR(255),
-    contact VARCHAR(20),
-    operating_hours VARCHAR(255)
+-- Create Subscription Table
+CREATE TABLE subscription (
+    subscription_id VARCHAR(20) PRIMARY KEY,
+    customer_id VARCHAR(20) NOT NULL,
+    payment_id VARCHAR(20) NOT NULL,
+    start_date DATE NOT NULL,
+    end_date DATE NOT NULL,
+    FOREIGN KEY (customer_id) REFERENCES customer(customer_id),
+    FOREIGN KEY (payment_id) REFERENCES payment(payment_id)
 );
 
 -- Create Delivery table
@@ -92,39 +127,5 @@ CREATE TABLE delivery (
     employee_id VARCHAR(20),
     delivery_date_time DATETIME,
     FOREIGN KEY (order_id) REFERENCES order_table(order_id),
-    FOREIGN KEY (employee_id) REFERENCES employe(employee_id)
-);
-
--- Create Employee table
-CREATE TABLE employee (
-    employee_id VARCHAR(20) PRIMARY KEY,
-    name VARCHAR(255),
-    contact VARCHAR(20),
-    total_deliveries INT,
-    ratings DECIMAL(3, 2),
-    restaurant_id VARCHAR(20),
-    store_id VARCHAR(20),
-    FOREIGN KEY (restaurant_id) REFERENCES order_table(restaurant_id),
-    FOREIGN KEY (store_id) REFERENCES order_table(store_id)
-);
-
--- Restaurant Table
-CREATE TABLE restaurant (
-    restaurant_id VARCHAR(20) PRIMARY KEY,
-    name VARCHAR(255) NOT NULL,
-    location VARCHAR(255) NOT NULL,
-    operating_hours VARCHAR(255) NOT NULL,
-    contact VARCHAR(20) NOT NULL,
-    rating DECIMAL(3, 2) NOT NULL
-);
-
--- Subscription Table
-CREATE TABLE subscription (
-    subscription_id VARCHAR(20) PRIMARY KEY,
-    customer_id VARCHAR(20) NOT NULL,
-    payment_id VARCHAR(20) NOT NULL,
-    start_date DATE NOT NULL,
-    end_date DATE NOT NULL,
-    FOREIGN KEY (customer_id) REFERENCES customers(customer_id),
-    FOREIGN KEY (payment_id) REFERENCES payments(payment_id)
+    FOREIGN KEY (employee_id) REFERENCES employee(employee_id)
 );
