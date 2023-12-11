@@ -24,19 +24,6 @@ INSERT INTO wallet (wallet_id, balance) VALUES
     ('WLT009', 300.00),
     ('WLT010', 1500.00);
 
--- Insert 10 values into the payment table
-INSERT INTO payment (payment_id, payment_type, order_id, subscription_id, price, wallet_id, customer_id) VALUES
-    ('PAY001', 'Credit Card', 'ORD001', NULL, 50.00, 'WLT001', 'CST001'),
-    ('PAY002', 'PayPal', 'ORD002', NULL, 30.00, 'WLT002', 'CST002'),
-    ('PAY003', 'Cash', 'ORD003', NULL, 25.00, 'WLT003', 'CST003'),
-    ('PAY004', 'Credit Card', 'ORD004', NULL, 40.00, 'WLT004', 'CST004'),
-    ('PAY005', 'Cash', 'ORD005', NULL, 35.00, 'WLT005', 'CST005'),
-    ('PAY006', 'PayPal', 'ORD006', NULL, 20.00, 'WLT006', 'CST006'),
-    ('PAY007', 'Credit Card', 'ORD007', NULL, 55.00, 'WLT007', 'CST007'),
-    ('PAY008', 'Cash', 'ORD008', NULL, 42.00, 'WLT008', 'CST008'),
-    ('PAY009', 'PayPal', 'ORD009', NULL, 28.00, 'WLT009', 'CST009'),
-    ('PAY010', 'Credit Card', 'ORD010', NULL, 60.00, 'WLT010', 'CST010');
-
 -- Insert 10 values into the order table
 INSERT INTO order_table (order_id, customer_id, restaurant_id, store_id, payment_id, order_date_time) VALUES
     ('ORD001', 'CST001', 'RES001', 'STR001', 'PAY001', '2023-12-11 10:30:00'),
@@ -127,3 +114,44 @@ INSERT INTO delivery (delivery_id, order_id, employee_id, delivery_date_time) VA
     ('DEL008', 'ORD008', 'EMP008', '2023-12-11 21:30:00'),
     ('DEL009', 'ORD009', 'EMP009', '2023-12-11 23:00:00'),
     ('DEL010', 'ORD010', 'EMP010', '2023-12-11 00:30:00');
+
+
+INSERT INTO restaurant (restaurant_id, name, location, operating_hours, contact, rating)
+VALUES
+    ('rest001', 'Cafe Bella', '123 Main St', '9 AM - 8 PM', '555-1234', 4.5),
+    ('rest002', 'Pizza Palace', '456 Oak Ave', '11 AM - 10 PM', '555-5678', 4.2),
+    ('rest003', 'Sushi Haven', '789 Pine Blvd', '12 PM - 9 PM', '555-9012', 4.8),
+    ('rest004', 'Burger Barn', '321 Elm Ln', '10:30 AM - 9:30 PM', '555-3456', 4.0),
+    ('rest005', 'Mexican Fiesta', '555 Maple Dr', '11 AM - 10 PM', '555-7890', 4.6),
+    ('rest006', 'Pasta Paradise', '777 Cedar Rd', '5 PM - 11 PM', '555-2345', 4.3),
+    ('rest007', 'Thai Spice', '888 Birch St', '12 PM - 8:30 PM', '555-6789', 4.7),
+    ('rest008', 'Steak House', '444 Pine Ln', '4 PM - 10 PM', '555-0123', 4.4),
+    ('rest009', 'Vegan Delight', '222 Oak Dr', '11 AM - 9 PM', '555-4567', 4.9),
+    ('rest010', 'Seafood Shack', '666 Maple Ave', '1 PM - 10 PM', '555-8901', 4.1);
+
+
+-- Insert 10 values into the subscription table
+INSERT INTO subscription (subscription_id, customer_id, payment_id, start_date, end_date) VALUES
+    ('SUBS001', 'CST001', 'PAY001', '2023-01-01', '2023-12-31'),
+    ('SUBS002', 'CST002', 'PAY002', '2023-02-01', '2023-11-30'),
+    ('SUBS003', 'CST003', 'PAY003', '2023-03-01', '2023-10-31'),
+    ('SUBS004', 'CST004', 'PAY004', '2023-04-01', '2023-09-30'),
+    ('SUBS005', 'CST005', 'PAY005', '2023-05-01', '2023-08-31'),
+    ('SUBS006', 'CST006', 'PAY006', '2023-06-01', '2023-07-31'),
+    ('SUBS007', 'CST007', 'PAY007', '2023-07-01', '2023-06-30'),
+    ('SUBS008', 'CST008', 'PAY008', '2023-08-01', '2023-05-31'),
+    ('SUBS009', 'CST009', 'PAY009', '2023-09-01', '2023-04-30'),
+    ('SUBS010', 'CST010', 'PAY010', '2023-10-01', '2023-03-31');
+
+-- Insert 10 values into the payment table
+INSERT INTO payment (payment_id, payment_type, order_id, subscription_id, price, wallet_id, customer_id) VALUES
+    ('PAY001', 'Credit Card', 'ORD001', 'SUBS001', 50.00, 'WLT001', 'CST001'),
+    ('PAY002', 'PayPal', 'ORD002', 'SUBS002', 30.00, 'WLT002', 'CST002'),
+    ('PAY003', 'Cash', 'ORD003', 'SUBS003', 25.00, 'WLT003', 'CST003'),
+    ('PAY004', 'Credit Card', 'ORD004', 'SUBS004', 40.00, 'WLT004', 'CST004'),
+    ('PAY005', 'Cash', 'ORD005', 'SUBS005', 35.00, 'WLT005', 'CST005'),
+    ('PAY006', 'PayPal', 'ORD006', 'SUBS006', 20.00, 'WLT006', 'CST006'),
+    ('PAY007', 'Credit Card', 'ORD007', 'SUBS007', 55.00, 'WLT007', 'CST007'),
+    ('PAY008', 'Cash', 'ORD008', 'SUBS008', 42.00, 'WLT008', 'CST008'),
+    ('PAY009', 'PayPal', 'ORD009', 'SUBS009', 28.00, 'WLT009', 'CST009'),
+    ('PAY010', 'Credit Card', 'ORD010', 'SUBS010', 60.00, 'WLT010', 'CST010');
