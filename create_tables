@@ -80,9 +80,11 @@ CREATE TABLE offer (
     valid_to DATETIME,
     restaurant_id VARCHAR(20),
     store_id VARCHAR(20),
+    discount_percentage DECIMAL(5, 2),
     FOREIGN KEY (restaurant_id) REFERENCES restaurant(restaurant_id),
-    FOREIGN KEY (store_id) REFERENCES grocery_store(store_id)
+    FOREIGN KEY (store_id) REFERENCES order_table(store_id)
 );
+
 
 -- Create Payment table
 CREATE TABLE payment (
