@@ -1,3 +1,5 @@
+use zomato;
+
 -- Create Admin table
 CREATE TABLE admin (
     admin_id VARCHAR(20) PRIMARY KEY,
@@ -72,19 +74,6 @@ CREATE TABLE employee (
     FOREIGN KEY (store_id) REFERENCES grocery_store(store_id)
 );
 
--- Create Offer table
-CREATE TABLE offer (
-    offer_id VARCHAR(20) PRIMARY KEY,
-    description VARCHAR(255),
-    valid_from DATETIME,
-    valid_to DATETIME,
-    restaurant_id VARCHAR(20),
-    store_id VARCHAR(20),
-    discount_percentage DECIMAL(5, 2),
-    FOREIGN KEY (restaurant_id) REFERENCES restaurant(restaurant_id),
-    FOREIGN KEY (store_id) REFERENCES order_table(store_id)
-);
-
 
 -- Create Payment table
 CREATE TABLE payment (
@@ -110,6 +99,21 @@ CREATE TABLE order_table (
     FOREIGN KEY (customer_id) REFERENCES customer(customer_id),
     FOREIGN KEY (payment_id) REFERENCES payment(payment_id)
 );
+
+-- Create Offer table
+CREATE TABLE offer (
+    offer_id VARCHAR(20) PRIMARY KEY,
+    description VARCHAR(255),
+    valid_from DATETIME,
+    valid_to DATETIME,
+    restaurant_id VARCHAR(20),
+    store_id VARCHAR(20),
+    discount_percentage DECIMAL(5, 2),
+    FOREIGN KEY (restaurant_id) REFERENCES restaurant(restaurant_id),
+    FOREIGN KEY (store_id) REFERENCES grocery_store(store_id)
+);
+
+
 
 -- Create Subscription Table
 CREATE TABLE subscription (
