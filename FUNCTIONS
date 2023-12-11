@@ -1,10 +1,10 @@
--- FUNCTION 1
-
+--FUNCTION 1
 DELIMITER $$
 
 CREATE DEFINER=`root`@`localhost` FUNCTION `GetOfferValidityDays`(
     offerId INT
 ) RETURNS INT
+DETERMINISTIC
 BEGIN
     DECLARE validityDays INT;
     DECLARE validFrom DATE;
@@ -23,14 +23,14 @@ END$$
 
 DELIMITER ;
 
-
-Function 2
+--FUNCTION 2
 
 DELIMITER $$
 
 CREATE DEFINER=`root`@`localhost` FUNCTION `GetTotalAmountSpent`(
     customerIDParam INT
 ) RETURNS DECIMAL(10, 2)
+READS SQL DATA
 BEGIN
     DECLARE totalAmount DECIMAL(10, 2);
 
@@ -44,13 +44,14 @@ END$$
 DELIMITER ;
 
 
-Function 3
+--FUNCTION 3
 
 DELIMITER $$
 
 CREATE DEFINER=`root`@`localhost` FUNCTION `GetTotalDeliveries`(
     empID VARCHAR(255)
 ) RETURNS INT
+READS SQL DATA
 BEGIN
     DECLARE totalDeliveries INT;
 
