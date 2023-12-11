@@ -1,0 +1,129 @@
+-- Insert 10 values into the customer table
+INSERT INTO customer (customer_id, name, address, contact, wallet_id) VALUES
+    ('CST001', 'John Doe', '123 Main St', '555-1234', 'WLT001'),
+    ('CST002', 'Jane Smith', '456 Oak St', '555-5678', 'WLT002'),
+    ('CST003', 'Bob Johnson', '789 Pine St', '555-9876', 'WLT003'),
+    ('CST004', 'Alice Williams', '101 Maple St', '555-4321', 'WLT004'),
+    ('CST005', 'Charlie Brown', '246 Elm St', '555-8765', 'WLT005'),
+    ('CST006', 'Eva Davis', '369 Walnut St', '555-6789', 'WLT006'),
+    ('CST007', 'Frank Miller', '505 Cedar St', '555-3456', 'WLT007'),
+    ('CST008', 'Grace Wilson', '707 Birch St', '555-7890', 'WLT008'),
+    ('CST009', 'David Lee', '808 Pine St', '555-2345', 'WLT009'),
+    ('CST010', 'Helen Clark', '909 Oak St', '555-8901', 'WLT010');
+
+-- Insert 10 values into the wallet table
+INSERT INTO wallet (wallet_id, balance) VALUES
+    ('WLT001', 1000.00),
+    ('WLT002', 500.00),
+    ('WLT003', 750.00),
+    ('WLT004', 1200.00),
+    ('WLT005', 800.00),
+    ('WLT006', 600.00),
+    ('WLT007', 950.00),
+    ('WLT008', 1100.00),
+    ('WLT009', 300.00),
+    ('WLT010', 1500.00);
+
+-- Insert 10 values into the payment table
+INSERT INTO payment (payment_id, payment_type, order_id, subscription_id, price, wallet_id, customer_id) VALUES
+    ('PAY001', 'Credit Card', 'ORD001', NULL, 50.00, 'WLT001', 'CST001'),
+    ('PAY002', 'PayPal', 'ORD002', NULL, 30.00, 'WLT002', 'CST002'),
+    ('PAY003', 'Cash', 'ORD003', NULL, 25.00, 'WLT003', 'CST003'),
+    ('PAY004', 'Credit Card', 'ORD004', NULL, 40.00, 'WLT004', 'CST004'),
+    ('PAY005', 'Cash', 'ORD005', NULL, 35.00, 'WLT005', 'CST005'),
+    ('PAY006', 'PayPal', 'ORD006', NULL, 20.00, 'WLT006', 'CST006'),
+    ('PAY007', 'Credit Card', 'ORD007', NULL, 55.00, 'WLT007', 'CST007'),
+    ('PAY008', 'Cash', 'ORD008', NULL, 42.00, 'WLT008', 'CST008'),
+    ('PAY009', 'PayPal', 'ORD009', NULL, 28.00, 'WLT009', 'CST009'),
+    ('PAY010', 'Credit Card', 'ORD010', NULL, 60.00, 'WLT010', 'CST010');
+
+-- Insert 10 values into the order table
+INSERT INTO order_table (order_id, customer_id, restaurant_id, store_id, payment_id, order_date_time) VALUES
+    ('ORD001', 'CST001', 'RES001', 'STR001', 'PAY001', '2023-12-11 10:30:00'),
+    ('ORD002', 'CST002', 'RES002', 'STR002', 'PAY002', '2023-12-11 11:45:00'),
+    ('ORD003', 'CST003', 'RES003', 'STR003', 'PAY003', '2023-12-11 12:15:00'),
+    ('ORD004', 'CST004', 'RES001', 'STR001', 'PAY004', '2023-12-11 13:00:00'),
+    ('ORD005', 'CST005', 'RES002', 'STR002', 'PAY005', '2023-12-11 13:45:00'),
+    ('ORD006', 'CST006', 'RES003', 'STR003', 'PAY006', '2023-12-11 14:30:00'),
+    ('ORD007', 'CST007', 'RES001', 'STR001', 'PAY007', '2023-12-11 15:15:00'),
+    ('ORD008', 'CST008', 'RES002', 'STR002', 'PAY008', '2023-12-11 16:00:00'),
+    ('ORD009', 'CST009', 'RES003', 'STR003', 'PAY009', '2023-12-11 16:45:00'),
+    ('ORD010', 'CST010', 'RES001', 'STR001', 'PAY010', '2023-12-11 17:30:00');
+
+-- Insert 10 values into the offer table
+INSERT INTO offer (offer_id, description, valid_from, valid_to, restaurant_id, store_id) VALUES
+    ('OFF001', 'Discount on Combo Meals', '2023-12-11', '2023-12-15', 'RES001', 'STR001'),
+    ('OFF002', 'Buy One Get One Free', '2023-12-11', '2023-12-14', 'RES002', 'STR002'),
+    ('OFF003', 'Happy Hour Specials', '2023-12-11', '2023-12-13', 'RES003', 'STR003'),
+    ('OFF004', 'Family Meal Deal', '2023-12-11', '2023-12-16', 'RES001', 'STR001'),
+    ('OFF005', 'Loyalty Points Promotion', '2023-12-11', '2023-12-18', 'RES002', 'STR002'),
+    ('OFF006', 'Weekend Brunch Special', '2023-12-11', '2023-12-17', 'RES003', 'STR003'),
+    ('OFF007', 'Student Discount', '2023-12-11', '2023-12-14', 'RES001', 'STR001'),
+    ('OFF008', 'Senior Citizen Discount', '2023-12-11', '2023-12-16', 'RES002', 'STR002'),
+    ('OFF009', 'Early Bird Special', '2023-12-11', '2023-12-13', 'RES003', 'STR003'),
+    ('OFF010', 'Holiday Season Promotion', '2023-12-11', '2023-12-20', 'RES001', 'STR001');
+
+-- Insert 10 values into the admin table
+INSERT INTO admin (admin_id, name) VALUES
+    ('ADM001', 'Admin1'),
+    ('ADM002', 'Admin2'),
+    ('ADM003', 'Admin3'),
+    ('ADM004', 'Admin4'),
+    ('ADM005', 'Admin5'),
+    ('ADM006', 'Admin6'),
+    ('ADM007', 'Admin7'),
+    ('ADM008', 'Admin8'),
+    ('ADM009', 'Admin9'),
+    ('ADM010', 'Admin10');
+
+-- Insert 10 values into the menu table
+INSERT INTO menu (menu_id, restaurant_id, item_name, item_description, price) VALUES
+    ('MNU001', 'RES001', 'Burger', 'Delicious beef burger', 10.99),
+    ('MNU002', 'RES002', 'Pizza', 'Margherita pizza with tomato and mozzarella', 12.99),
+    ('MNU003', 'RES003', 'Pasta', 'Spaghetti with marinara sauce', 8.99),
+    ('MNU004', 'RES001', 'Steak', 'Grilled sirloin steak with mashed potatoes', 19.99),
+    ('MNU005', 'RES002', 'Sushi', 'Assorted sushi rolls with soy sauce', 15.99),
+    ('MNU006', 'RES003', 'Salad', 'Caesar salad with grilled chicken', 7.99),
+    ('MNU007', 'RES001', 'Fish and Chips', 'Crispy fish fillets with fries', 11.99),
+    ('MNU008', 'RES002', 'Tacos', 'Soft tacos with seasoned beef and toppings', 9.99),
+    ('MNU009', 'RES003', 'Chicken Curry', 'Spicy chicken curry with rice', 13.99),
+    ('MNU010', 'RES001', 'Dessert', 'Chocolate lava cake with vanilla ice cream', 6.99);
+
+-- Insert 10 values into the items table
+INSERT INTO items (item_id, store_id, item_name, item_description, price) VALUES
+    ('ITM001', 'STR001', 'Milk', 'Fresh cow milk', 2.99),
+    ('ITM002', 'STR002', 'Bread', 'Whole grain bread', 1.99),
+    ('ITM003', 'STR003', 'Eggs', 'Dozen large eggs', 3.49),
+    ('ITM004', 'STR001', 'Cheese', 'Cheddar cheese block', 4.99),
+    ('ITM005', 'STR002', 'Yogurt', 'Greek yogurt, plain', 3.29),
+    ('ITM006', 'STR003', 'Chicken', 'Boneless, skinless chicken breasts', 7.99),
+    ('ITM007', 'STR001', 'Cereal', 'Whole grain cereal', 4.49),
+    ('ITM008', 'STR002', 'Fruits', 'Assorted fresh fruits', 6.99),
+    ('ITM009', 'STR003', 'Vegetables', 'Mixed vegetables pack', 5.99),
+    ('ITM010', 'STR001', 'Water', 'Bottled water, 24-pack', 8.99);
+
+-- Insert 10 values into the grocery_store table
+INSERT INTO grocery_store (store_id, store_name, address, contact, operating_hours) VALUES
+    ('STR001', 'SuperMart', '123 Market St', '555-1111', '8:00 AM - 9:00 PM'),
+    ('STR002', 'FreshFoods', '456 Grocery Ave', '555-2222', '9:00 AM - 8:00 PM'),
+    ('STR003', 'QuickMart', '789 Convenience Blvd', '555-3333', '7:00 AM - 10:00 PM'),
+    ('STR004', 'GreenGrocers', '101 Organic Lane', '555-4444', '10:00 AM - 7:00 PM'),
+    ('STR005', 'BulkBuy', '202 Warehouse Way', '555-5555', '6:00 AM - 11:00 PM'),
+    ('STR006', 'NeighborhoodMart', '303 Suburb Street', '555-6666', '8:00 AM - 8:00 PM'),
+    ('STR007', 'CityMarket', '404 Urban Plaza', '555-7777', '9:00 AM - 7:00 PM'),
+    ('STR008', 'CornerStore', '505 Crossroads Corner', '555-8888', '7:30 AM - 8:30 PM'),
+    ('STR009', 'MetroMart', '606 City Center', '555-9999', '8:30 AM - 9:30 PM'),
+    ('STR010', 'TownGrocers', '707 Main Street', '555-0000', '10:30 AM - 6:30 PM');
+
+-- Insert 10 values into the delivery table
+INSERT INTO delivery (delivery_id, order_id, employee_id, delivery_date_time) VALUES
+    ('DEL001', 'ORD001', 'EMP001', '2023-12-11 11:00:00'),
+    ('DEL002', 'ORD002', 'EMP002', '2023-12-11 12:30:00'),
+    ('DEL003', 'ORD003', 'EMP003', '2023-12-11 14:00:00'),
+    ('DEL004', 'ORD004', 'EMP004', '2023-12-11 15:30:00'),
+    ('DEL005', 'ORD005', 'EMP005', '2023-12-11 17:00:00'),
+    ('DEL006', 'ORD006', 'EMP006', '2023-12-11 18:30:00'),
+    ('DEL007', 'ORD007', 'EMP007', '2023-12-11 20:00:00'),
+    ('DEL008', 'ORD008', 'EMP008', '2023-12-11 21:30:00'),
+    ('DEL009', 'ORD009', 'EMP009', '2023-12-11 23:00:00'),
+    ('DEL010', 'ORD010', 'EMP010', '2023-12-11 00:30:00');
