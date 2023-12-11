@@ -1,0 +1,5 @@
+CREATE TRIGGER `after_customer_insert` AFTER INSERT ON `customer`
+ FOR EACH ROW BEGIN
+    -- Insert a new row into the wallet table with the same customer_id and a balance of 0
+    INSERT INTO wallet (wallet_id, balance, customer_id) VALUES (NEW.wallet_id, 0, NEW.customer_id);
+END
